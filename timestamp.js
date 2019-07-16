@@ -11,7 +11,7 @@ function processData(allText) {
         var url_text = data[0]+" - "+data[1];
 
         // Set url on the timestamp
-        var url = data[3];
+        var newUrl = data[3];
 
         // Create new table row
         var tr = document.createElement('tr');
@@ -28,6 +28,14 @@ function processData(allText) {
   		button1.style.margin = "4px 2px";
   		button1.style.cursor = "pointer";
   		button1.style.width = "100%";
+
+  		button1.addEventListener('click', function() {
+    		chrome.tabs.getCurrent(function (tab) {
+  				//Update the url here.
+  				chrome.tabs.update({url: newUrl});
+			});
+    	});
+
         td1.appendChild(button1);
         td1.style.width = "200px";
         tr.appendChild(td1);
@@ -69,3 +77,4 @@ function readTextFile(file)
 document.addEventListener('DOMContentLoaded', function() {
 	readTextFile("data.csv");	
 });
+

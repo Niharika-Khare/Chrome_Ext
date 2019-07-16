@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     popupButton.addEventListener('click', function() {
     	window.open("timestamp.html", "_parent");
     });
-    
+
 });
 
        	
