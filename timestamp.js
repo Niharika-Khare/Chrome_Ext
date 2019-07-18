@@ -113,6 +113,9 @@ function processData(allText) {
 }
 
 
+// ----------------------------------------------------------------
+// Method 1:
+// Read Data as Text file (working)
 function readTextFile(file)
 {
     var rawFile = new XMLHttpRequest();
@@ -131,13 +134,61 @@ function readTextFile(file)
     rawFile.send(null);
 }
 
-function callPythonFunction(url) {
 
+// -----------------------------------------------------------------
+// Method 2:
+// Call python function to get data dynamically through flask (NOT WORKING!!!)
+function callPythonFunction(link) {
+	var xhr = new XMLHttpRequest();
+    var url = "localhost:5000/"+link;
+    xhr.open("GET", "/"+link, true);
+
+    xhr.onreadystatechange = function() {
+      	if(xhr.readyState === 4 && xhr.status == 200) {
+      		alert(xhr.responseText);
+        	receivedContent = JSON.parse(this.responseText);
+        	alert(receivedContent);
+        	processData(receivedContent);
+      	}
+    };
+
+	// // ---------------------------------------------------------------
+    // // Method 3:
+    // // Call Python through JQuery (not working)
+    // 	$.ajax({
+  		// type: "GET",
+ 		// url: "./dummy.py",
+  		// data: { param: url},
+  		// success: processData
+	// });
 } 
 
+
+// //-----------------------------------------------------------------
+// // Method 4:
+// // Execute shell command to get data (not working)
+// function execute(command) {
+//   	const exec = require('child_process').exec;
+//   	var allText = exec(command, (err, stdout, stderr) => {
+//   		return stdout;
+//   	});
+//   	processData(allText);
+// }
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
-	var url = window.location.href;
-	// callPythonFunction(url);
-	readTextFile("data.csv");	
+	chrome.tabs.getSelected(null, function(tab){
+    	var url = tab.url;
+    	// Method 2 & 3
+		callPythonFunction(url);
+
+		// // Method 1
+		// readTextFile("data.csv");
+
+		// Method 4
+		// execute('python dummy.py' + url);
+	});
+		
 });
 
