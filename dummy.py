@@ -2,9 +2,8 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/<url>')
-def dummyFunction(url) :
-	print "Hello"
+@app.route('/',methods=['POST'])
+def dummyFunction() :
 	# Read data from data.csv
 	file = open("data.csv","r")
 	return file.read()

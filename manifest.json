@@ -32,6 +32,9 @@
 	},
 
 	"permissions": [
-		"tabs"
+		"tabs",
+		"notifications",         
+		"http://*/",         
+		"https://*/"
 	]
 } 

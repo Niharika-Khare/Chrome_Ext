@@ -139,18 +139,28 @@ function readTextFile(file)
 // Method 2:
 // Call python function to get data dynamically through flask (NOT WORKING!!!)
 function callPythonFunction(link) {
-	var xhr = new XMLHttpRequest();
-    var url = "localhost:5000/"+link;
-    xhr.open("GET", "/"+link, true);
 
-    xhr.onreadystatechange = function() {
-      	if(xhr.readyState === 4 && xhr.status == 200) {
-      		alert(xhr.responseText);
-        	receivedContent = JSON.parse(this.responseText);
-        	alert(receivedContent);
-        	processData(receivedContent);
-      	}
-    };
+	fetch("http://localhost:5000/",{
+		method: "post",
+		body: JSON.stringify({
+			link: link
+		})
+	}).then(function(response) {
+    	return response.text();
+  	}).then(function(myJson) {
+  		processData(myJson);
+  	});
+
+	// var xhr = new XMLHttpRequest();
+ //    var url = "localhost:5000/"+link;
+ //    xhr.open("post", url, true);
+
+ //    xhr.onreadystatechange = function() {
+ //      	if(xhr.readyState === 4 && xhr.status == 200) {
+ //        	receivedContent = JSON.parse(this.responseText);
+ //        	processData(receivedContent);
+ //      	}
+ //    };
 
 	// // ---------------------------------------------------------------
     // // Method 3:
@@ -191,4 +201,3 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 		
 });
-
