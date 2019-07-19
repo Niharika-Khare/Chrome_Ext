@@ -13,7 +13,7 @@ function processData(allText) {
 	    var allTextLines = allDivisions[division].split(/\r\n|\n/);
 
 	    // Primary Division
-	    var fields = allTextLines[0].split('\t');
+	    var fields = allTextLines[0].split("\t");
 
 	    // Set text for start and end timestamp
 	    var url_text = fields[0]+" - "+fields[1];
@@ -74,7 +74,7 @@ function processData(allText) {
     	for (var i=1; i<allTextLines.length; i++) {
     	
     		// Obtain all fields separately
-        	var data = allTextLines[i].split('\t');
+        	var data = allTextLines[i].split("\t");
         	
         	// Select option text:
         	var option1 = document.createElement('option');
@@ -114,8 +114,7 @@ function processData(allText) {
 
 
 // ----------------------------------------------------------------
-// Method 1:
-// Read Data as Text file (working)
+// Read Data as Text file
 function readTextFile(file)
 {
     var rawFile = new XMLHttpRequest();
@@ -136,8 +135,7 @@ function readTextFile(file)
 
 
 // -----------------------------------------------------------------
-// Method 2:
-// Call python function to get data dynamically through flask (NOT WORKING!!!)
+// Call python function to get data dynamically through flask
 function callPythonFunction(link) {
 
 	fetch("http://localhost:5000/",{
@@ -145,59 +143,23 @@ function callPythonFunction(link) {
 		body: JSON.stringify({
 			link: link
 		})
-	}).then(function(response) {
-    	return response.text();
-  	}).then(function(myJson) {
-  		processData(myJson);
-  	});
-
-	// var xhr = new XMLHttpRequest();
- //    var url = "localhost:5000/"+link;
- //    xhr.open("post", url, true);
-
- //    xhr.onreadystatechange = function() {
- //      	if(xhr.readyState === 4 && xhr.status == 200) {
- //        	receivedContent = JSON.parse(this.responseText);
- //        	processData(receivedContent);
- //      	}
- //    };
-
-	// // ---------------------------------------------------------------
-    // // Method 3:
-    // // Call Python through JQuery (not working)
-    // 	$.ajax({
-  		// type: "GET",
- 		// url: "./dummy.py",
-  		// data: { param: url},
-  		// success: processData
-	// });
-} 
-
-
-// //-----------------------------------------------------------------
-// // Method 4:
-// // Execute shell command to get data (not working)
-// function execute(command) {
-//   	const exec = require('child_process').exec;
-//   	var allText = exec(command, (err, stdout, stderr) => {
-//   		return stdout;
+	});
+// 	.then(function(response) {
+//     	return response.text();
+//   	}).then(function(myJson) {
+//   		processData(myJson);
 //   	});
-//   	processData(allText);
-// }
-
-
+} 
 
 document.addEventListener('DOMContentLoaded', function() {
 	chrome.tabs.getSelected(null, function(tab){
     	var url = tab.url;
-    	// Method 2 & 3
+
+    	// Execute python function and save data in out1.txt
 		callPythonFunction(url);
 
-		// // Method 1
-		// readTextFile("data.csv");
-
-		// Method 4
-		// execute('python dummy.py' + url);
+		// Read from output1.txt
+		readTextFile("data.csv");
 	});
 		
 });

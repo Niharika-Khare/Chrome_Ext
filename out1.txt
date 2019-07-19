@@ -1,0 +1,42 @@
+$0:0:0=0:2:10=Deep learning Introduction and assignment grading
+00:00:00=00:0:50=Project Due, Administrative Notes
+00:00:51=00:01:10=assignment grading, assignment due
+00:01:11=00:01:37=Reserve Google credits, GPU use assignment
+00:01:38=00:02:10=Midterm exam, theoretical,open book
+$0:2:11=0:3:44=Recap of optimization regularization Dropout and Transfer Learning
+00:02:11=00:02:40=optimization, SGD, Adam
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+$0:3:45=0:11:51=GPU framework Nvidia and AMD for Video Gaming
+00:02:11=00:02:40=optimization, SGD, Adam
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+$0:11:52=0:19:44=GPU Programming, CUDA Library, CPU Synchronization
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+$0:19:45=0:27:34=Framework Caffe, Pytorch, TensorFlow, Computational Graph
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+$0:27:35=0:43:49=TensorFlow example, Computational Graph
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+$0:43:50=0:51:16=Keras wrapper, Keras Model
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+$0:51:17=1:05:24=Pytorch facebook, Autograd, optimizer and dataloader
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+$1:05:25=1:12:39=recurrent and recursive application
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+$1:12:40=1:18:06=caffe2, Google, facebook, industry and pretrained model
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
+00:02:40=00:03:05=regularization, Dropout, network to zero
+00:03:06=00:03:44=Transfer learning, Download, fine-tune, model
