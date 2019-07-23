@@ -44,13 +44,16 @@ function processData(allText) {
   		button1.style.borderRadius = "8px";
 	
 		// Add Event for timestmp click
-		// URL of the current window should change on clicking
-  		button1.addEventListener('click', function() {
-    		chrome.tabs.getCurrent(function (tab) {
-  				//Update the URL of current tab here
-  				chrome.tabs.update({url: newUrl});
-			});
-    	});
+    // URL of the current window should change on clicking
+      button1.onclick = (function (newUrl) {
+          return function () {
+              chrome.tabs.getCurrent(function (tab) {
+            //Update the URL of current tab here
+            chrome.tabs.update({url: newUrl});
+        });
+          };
+      })(newUrl);
+      
        	td1.appendChild(button1);
        	td1.style.width = "150px";
        	td1.style.padding = "10px";
